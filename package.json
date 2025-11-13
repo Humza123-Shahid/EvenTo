@@ -1,0 +1,20 @@
+{
+  "name": "evento",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "client": "npm start --prefix client",
+    "server": "npm start --prefix server",
+    "both": "concurrently \"nodemon server/index.js\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.1.0",
+    "concurrently": "^9.2.1",
+    "create-react-app": "^5.1.0"
+  }
+}
