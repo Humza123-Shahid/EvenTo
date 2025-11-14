@@ -77,7 +77,7 @@ const AddAssignment = () => {
          console.log(date2);
          const myStaff = staff.join(",");
          console.log(allStaffValue);
-          const success=await addAssignment(allStaffValue,selectedEventValue,selectedRoleValue,shiftStart,shiftEnd)
+          const success=await addAssignment(allStaffValue,selectedEventValue,shiftStart,shiftEnd)
           console.log(success)
           if(success)
           {
@@ -90,7 +90,8 @@ const AddAssignment = () => {
             },1500)
           }
     }
-        const getUserById = (id) => users?.find(d => d._id === id);
+    const getUserById = (id) => users?.find(d => d._id === id);
+    const getRoleById = (id) => roles?.find(d => d._id === id);
 
     const addOption = (e) => {
                e.preventDefault();
@@ -105,10 +106,20 @@ console.log("abc")
         }
         else{
           console.log("setabc");
-          setStaff(prev => [...prev, selectedOption.innerHTML]);
+          const check=staff.includes(selectedOption.innerHTML);
+          const check2=allStaffValue.includes(selectedStaffValue);
+
+          if(!check || !check2)
+          {
+            setStaff(prev => [...prev, selectedOption.innerHTML]);
+          }
         }
         console.log(selectedStaffValue)
-        setAllStaffValue(prev => [...prev, selectedStaffValue]);
+        const check3=allStaffValue.includes(selectedStaffValue);
+         if(!check3)
+          {
+            setAllStaffValue(prev => [...prev, selectedStaffValue]);
+          }
         setSelectedStaffValue('');
         
     }
@@ -170,7 +181,7 @@ useEffect(() => {
         ))}
       </select>
     </div>
-    <div className="mb-3 my-3 me-3" style={{width:'100%'}}>
+    {/* <div className="mb-3 my-3 me-3" style={{width:'100%'}}>
       
       <label htmlFor="mySelect2" className="form-label">Select Role:</label>
       <select id="mySelect2" className="form-control "  value={selectedRoleValue} onChange={handleChangeRole}>
@@ -179,19 +190,18 @@ useEffect(() => {
         <option value={row._id}>{row.name}</option>
         ))}
       </select>
-    </div>
+    </div> */}
     <div className="mb-3 my-3 me-3" style={{width:'100%'}}>
             <label htmlFor="shiftstart" className="form-label">Select Shift Start:</label>
             <input type="datetime-local" className="form-control" id="shiftstart" value={shiftStart} name="shiftstart" onChange={handleShiftStartChange} />
       </div>
-    </div>
-      <div className='mx-0' style={{display:'flex'}}>
-
-      
-       <div className="mb-3 my-3 me-3" style={{width:'100%'}}>
+      <div className="mb-3 my-3 me-3" style={{width:'100%'}}>
             <label htmlFor="shiftend" className="form-label">Select Shift End:</label>
             <input type="datetime-local" className="form-control" id="shiftend" value={shiftEnd} name="shiftend" onChange={handleShiftEndChange} />
       </div>
+    </div>
+      {/* <div className='mx-0' style={{display:'flex'}}>
+
       <div className="mb-3 ms-3" style={{width:'100%'}}>
           <label htmlFor="abc" className="form-label" style={{display:'none'}}>abc</label>
           <input type="text" className="form-control" style={{display:'none'}} id="abc" name="abc"/>
@@ -200,22 +210,25 @@ useEffect(() => {
           <label htmlFor="abc" className="form-label" style={{display:'none'}}>abc</label>
           <input type="text" className="form-control" style={{display:'none'}} id="abc" name="abc"/>
     </div>
-    </div>
+    </div> */}
     </form>
     <div className="mb-3 my-3 me-3" style={{width:'39%'}}>
       
-      <label htmlFor="mySelect3" className="form-label">Select Staff:</label>
+      <label htmlFor="mySelect3" className="form-label">Select User:</label>
       <div className='d-flex'>
       <select id="mySelect3" className="form-control "  value={selectedStaffValue} onChange={handleChangeStaff}>
         <option value="">-Select-</option>
-        {staffs.map((row) => {
-        const user = getUserById(row.user_id);
+        {/* {staffs.map((row) => { */}
+        {users.map((user) => {
+        //const user = getUserById(row.user_id);
+        const role = getRoleById(user?.role_id);
+
         // setStaffName(user?.fullName);
         return(
-        <option value={row._id}>{user?.fullName}</option>)
+        <option value={user._id}>{user?.fullName} - {role?.name}</option>)
       })}
       </select>
-      <button onClick={addOption} style={{width:'20%',marginLeft:'5px'}}>Add Staff</button>
+      <button onClick={addOption} style={{width:'20%',marginLeft:'5px'}}>Add User</button>
       </div>
     </div>
      <div style={{ marginTop: '20px' }}>
@@ -247,7 +260,7 @@ useEffect(() => {
         </>
         ))}
       </div> 
-      <button disabled={shiftStart.length<1||shiftEnd.length<1||staff.length<1||selectedEventValue==''||selectedRoleValue==''} type="submit" className="btn btn-primary" onClick={() => {addAssignments()}}>Add Assignment</button>
+      <button disabled={shiftStart.length<1||shiftEnd.length<1||staff.length<1||selectedEventValue==''} type="submit" className="btn btn-primary" onClick={() => {addAssignments()}}>Add Assignment</button>
       
     </div>
   )

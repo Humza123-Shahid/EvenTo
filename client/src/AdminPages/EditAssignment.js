@@ -19,6 +19,7 @@ const EditAssignment = () => {
     const {events,getEvents}=context3;
     const context4=useContext(roleContext);
     const {roles,getRoles}=context4;
+    const [staff, setStaff] = useState([]);
     const [showToast,setShowToast]=useState(false)
         const [msg,setMsg]=useState('')
         const [type,setType]=useState('')
@@ -41,7 +42,8 @@ const EditAssignment = () => {
     const [arrivalTime2, setArrivalTime2] = useState("");
     const [date, setDate] = useState("");
     const [date2, setDate2] = useState("");
-    const [selectedStaffValue, setSelectedStaffValue] = useState(location.state?.staffId|| {});
+    //const [allStaffValue, setAllStaffValue] = useState([]);
+    const [selectedStaffValue, setSelectedStaffValue] = useState(`${location.state?.userName|| {}} - ${location.state?.roleName|| {}}`);
     const [selectedEventValue, setSelectedEventValue] = useState(location.state?.eventId|| {});
     const [selectedRoleValue, setSelectedRoleValue] = useState(location.state?.roleId|| {});
     //const [fareAmount, setFareAmount] = useState(0);
@@ -78,8 +80,7 @@ const EditAssignment = () => {
 //     setFareAmount(event.target.value); 
 //   };
    
-  const editAssignments=async (e)=>{
-         e.preventDefault();
+  const editAssignments=async ()=>{
         //  const utcArrTime = new Date(arrivalTime2.getTime() - arrivalTime2.getTimezoneOffset() * 60000)
         //  const utcDepTime = new Date(departureTime2.getTime() - departureTime2.getTimezoneOffset() * 60000)
 
@@ -87,7 +88,7 @@ const EditAssignment = () => {
         //  setArrivalTime("1970-09-03T"+arrivalTime);
          console.log(arrivalTime2);
          console.log(date2);
-          const success=await editAssignment(location.state?.assignId||{},selectedStaffValue,selectedEventValue,selectedRoleValue,shiftStart,shiftEnd)
+          const success=await editAssignment(location.state?.assignId||{},selectedEventValue,shiftStart,shiftEnd)
           console.log(success)
           if(success)
           {
@@ -101,6 +102,8 @@ const EditAssignment = () => {
           }
     }
         const getUserById = (id) => users?.find(d => d._id === id);
+        const getRoleById = (id) => roles?.find(d => d._id === id);
+
 
 useEffect(() => {
             const fetchData = async () => {
@@ -127,9 +130,9 @@ useEffect(() => {
   return (
     <div className='ms-3'>
     <InfoMessage showToast={showToast} msg={msg} type={type}/>
-    <form onSubmit={editAssignments}>
+    <form>
     <div className='mx-0' style={{display:'flex'}}>
-      <div className="mb-3 my-3 me-3" style={{width:'100%'}}>
+      {/* <div className="mb-3 my-3 me-3" style={{width:'100%'}}>
       
       <label htmlFor="mySelect" className="form-label">Select Staff:</label>
       <select id="mySelect" className="form-control "  value={selectedStaffValue} onChange={handleChangeStaff}>
@@ -140,7 +143,7 @@ useEffect(() => {
         <option value={row._id}>{user?.fullName}</option>)
       })}
       </select>
-    </div>
+    </div> */}
     <div className="mb-3 my-3 me-3" style={{width:'100%'}}>
       
       <label htmlFor="mySelect" className="form-label">Select Event:</label>
@@ -152,6 +155,15 @@ useEffect(() => {
       </select>
     </div>
     <div className="mb-3 my-3 me-3" style={{width:'100%'}}>
+            <label htmlFor="shiftstart" className="form-label">Select Shift Start:</label>
+            <input type="datetime-local" className="form-control" id="shiftstart" value={shiftStart} name="shiftstart" onChange={handleShiftStartChange} />
+      </div>
+       <div className="mb-3 my-3 me-3" style={{width:'100%'}}>
+            <label htmlFor="shiftend" className="form-label">Select Shift End:</label>
+            <input type="datetime-local" className="form-control" id="shiftend" value={shiftEnd} name="shiftend" onChange={handleShiftEndChange} />
+      </div>
+    
+    {/* <div className="mb-3 my-3 me-3" style={{width:'100%'}}>
       
       <label htmlFor="mySelect" className="form-label">Select Role:</label>
       <select id="mySelect" className="form-control "  value={selectedRoleValue} onChange={handleChangeRole}>
@@ -160,26 +172,33 @@ useEffect(() => {
         <option value={row._id}>{row.name}</option>
         ))}
       </select>
+    </div> */}
     </div>
-    </div>
-      <div className='mx-0' style={{display:'flex'}}>
-
-      <div className="mb-3 my-3 me-3" style={{width:'100%'}}>
-            <label htmlFor="shiftstart" className="form-label">Select Shift Start:</label>
-            <input type="datetime-local" className="form-control" id="shiftstart" value={shiftStart} name="shiftstart" onChange={handleShiftStartChange} />
-      </div>
-       <div className="mb-3 my-3 me-3" style={{width:'100%'}}>
-            <label htmlFor="shiftend" className="form-label">Select Shift End:</label>
-            <input type="datetime-local" className="form-control" id="shiftend" value={shiftEnd} name="shiftend" onChange={handleShiftEndChange} />
-      </div>
-      <div className="mb-3 ms-3" style={{width:'100%'}}>
-          <label htmlFor="abc" className="form-label" style={{display:'none'}}>abc</label>
-          <input type="text" className="form-control" style={{display:'none'}} id="abc" name="abc"/>
-    </div>
-    </div>
-      
-      <button disabled={shiftStart.length<1||shiftEnd.length<1||selectedStaffValue==''||selectedEventValue==''||selectedRoleValue==''} type="submit" className="btn btn-primary">Edit Assignment</button>
       </form>
+      <div className="mb-3 my-3 me-3" style={{width:'39%'}}>
+      
+      <label htmlFor="usersel" className="form-label">User:</label>
+      <div className='d-flex'>
+        <input type='text' className='form-control' value={selectedStaffValue} style={{width:"32.2%"}} id='usersel' name='usersel' disabled/>
+
+      {/* <select id="mySelect3" className="form-control "  value={selectedStaffValue} onChange={handleChangeStaff}>
+        <option value="">-Select-</option>
+        
+        {users.map((user) => {
+        //const user = getUserById(row.user_id);
+        const role = getRoleById(user?.role_id);
+
+        // setStaffName(user?.fullName);
+        return(
+        <option value={user._id}>{user?.fullName} - {role?.name}</option>)
+      })}
+      </select>
+      <button onClick={addOption} style={{width:'20%',marginLeft:'5px'}}>Add User</button>  */}
+      </div>
+    </div>
+     
+      <button disabled={shiftStart.length<1||shiftEnd.length<1||selectedEventValue==''} type="submit" className="btn btn-primary" onClick={() => {editAssignments()}}>Edit Assignment</button>
+      
     </div>
   )
 }

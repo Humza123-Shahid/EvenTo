@@ -19,19 +19,19 @@ const EditUser = () => {
     const {addStaff,deleteStaff,editStaff}=context2;
 
     const [isStaff, setIsStaff] = useState(() => {
-    if (location.state && location.state?.user=="staff") {
+    if (location.state && (location.state?.user=="director"||location.state?.user=="manager")) {
       return true;
     }
     return false;
   });
       const [selectedStatusValue, setSelectedStatusValue] =  useState(() => {
-    if (location.state && (location.state?.user=="staff"||location.state?.user=="photographer")) {
+    if (location.state && (location.state?.user=="director"||location.state?.user=="manager"||location.state?.user=="photographer")) {
       return location.state?.availability_status;
     }
     return true;
   });
       const [selectedSalaryValue, setSelectedSalaryValue] = useState(() => {
-    if (location.state && (location.state?.user=="staff"||location.state?.user=="waiter")) {
+    if (location.state && (location.state?.user=="director"||location.state?.user=="manager"||location.state?.user=="waiter")) {
       return location.state?.salary;
     }
     return "";
@@ -103,7 +103,7 @@ const EditUser = () => {
       if(e.target.name=='roleId')
       {
        const roleobj= getRoleById(e.target.value);
-       if(roleobj?.name=='staff')
+       if(roleobj?.name=='director'||roleobj?.name=='manager')
        {
         
         setIsVendor(false)
@@ -156,7 +156,7 @@ const EditUser = () => {
         //props.showAlert("Passwords do not match","danger")
         return;
         }
-        if(userName=='staff'&&roleobj?.name!='staff')
+        if((userName=='director'&&roleobj?.name!='director')&&(userName=='manager'&&roleobj?.name!='manager'))
         {
             const staff_id=location.state?.staffId||{};
             deleteStaff(staff_id);
@@ -202,7 +202,7 @@ const EditUser = () => {
           console.log(user)
           if(user.success)
           {
-            if(roleobj?.name=='staff')
+            if(roleobj?.name=='director'||roleobj?.name=='manager')
             {
               console.log("roleabc");
               const response=await fetch("http://localhost:5000/api/staff/fetchstaffbyId",{

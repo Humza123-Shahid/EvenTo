@@ -49,7 +49,7 @@ const AddUser = () => {
       if(e.target.name=='roleId')
       {
        const roleobj= getRoleById(e.target.value);
-       if(roleobj?.name=='staff')
+       if(roleobj?.name=='director'||roleobj?.name=='manager')
        {
         
         setIsVendor(false)
@@ -106,7 +106,7 @@ const AddUser = () => {
           console.log(user)
           if(user.success)
           {
-            if(roleobj?.name=='staff')
+            if(roleobj?.name=='director'||roleobj?.name=='manager')
             {
               console.log(user._id)
               await addStaff(user.data._id,selectedSalaryValue,selectedStatusValue)

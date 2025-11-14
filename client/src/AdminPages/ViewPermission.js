@@ -3,25 +3,22 @@ import { useLocation } from 'react-router-dom';
 
 const ViewDestination = () => {
      const location = useLocation();
-    const Role=location.state?.role || {};
+    const Permission=location.state?.permission || {};
     const index=location.state?.idx;
-    const Status=Role.status?"Active":"InActive";
   return (
     <div>
-      <h1 className="ms-4">Role Data</h1>
+      <h1 className="ms-4">Permission Data</h1>
       <table  className="styled-table ms-4">
         <thead>
           <tr>
             <th>#</th>
-            <th>Name</th>
-            <th>Status</th>
+            <th>Permission</th>
           </tr>
         </thead>
         <tbody>
-            <tr key={Role._id}>
+            <tr key={Permission._id}>
               <td>{index}</td>
-              <td>{Role.name}</td>
-              <td>{Status}</td>
+              <td>{Permission.permission}</td>
             </tr>
         </tbody>
       </table>

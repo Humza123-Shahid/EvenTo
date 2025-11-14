@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom';
 
 const ViewAssignment = () => {
      const location = useLocation();
-    const staffName=location.state?.staff || {};
+    const user=location.state?.userName || {};
+    const role=location.state?.roleName || {};
     const eventName=location.state?.event || {};
-    const roleName=location.state?.role|| {};
     const shiftStart=location.state?.start || {};
     const shiftEnd=location.state?.end || {};
     const index=location.state?.idx;
@@ -19,7 +19,6 @@ const ViewAssignment = () => {
             <th>#</th>
             <th>Staff</th>
             <th>Event</th>
-            <th>Role</th>
             <th>Shift Start</th>
             <th>Shift End</th>
           </tr>
@@ -27,9 +26,8 @@ const ViewAssignment = () => {
         <tbody>
             <tr>
               <td>{index}</td>
-              <td>{staffName}</td>
+              <td>{user} - {role}</td>
               <td>{eventName}</td>
-              <td>{roleName}</td>
               <td>{shiftStart}</td>
               <td>{shiftEnd}</td>
             </tr>

@@ -21,12 +21,11 @@ router.get('/fetchallassignments',fetchuser,async (req,res)=>{
 router.post('/addassignment',fetchuser,async (req,res)=>{
     try {
         let success = false;
-        const {allStaff,event_id,role_id,shift_start,shift_end}=req.body;
+        const {allStaff,event_id,shift_start,shift_end}=req.body;
         let savedAssignment;
-        allStaff.forEach(async function(staff) {
-            console.log(staff)
+        allStaff.forEach(async function(user) {
                 await Assignment.create(
-                    { staff_id:staff,event_id:event_id,role_id:role_id,shift_start:shift_start,shift_end:shift_end})
+                    { user_id:user,event_id:event_id,shift_start:shift_start,shift_end:shift_end})
                 
                 
             });
@@ -49,11 +48,10 @@ router.post('/addassignment',fetchuser,async (req,res)=>{
 // ROUTE 3: Update an existing Question using :PUT "/api/questions/updatequestion".Login required
 router.put('/updateassignment/:id',fetchuser,async (req,res)=>{
     let success = false;
-    const {staff_id,event_id,role_id,shift_start,shift_end}=req.body;
+    const {event_id,shift_start,shift_end}=req.body;
     const newAssignment={};
-    if(staff_id){newAssignment.staff_id=staff_id};
+    //if(user_id){newAssignment.user_id=user_id};
     if(event_id){newAssignment.event_id=event_id};
-    if(role_id){newAssignment.role_id=role_id};
     if(shift_start){newAssignment.shift_start=shift_start};
     if(shift_end){newAssignment.shift_end=shift_end};
 

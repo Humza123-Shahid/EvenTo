@@ -10,10 +10,10 @@ const { Schema } = mongoose;
 
 // }, { timestamps: true });
 const assignmentSchema = new Schema({
-  staff_id: { type: mongoose.Schema.Types.ObjectId, ref: "Staff", required: true },
+  user_id: { type: mongoose.Schema.Types.ObjectId, ref: "Staff", required: true },
   event_id: { type: mongoose.Schema.Types.ObjectId, ref: "Event", required: true  },
   //role: { type: String, required:true },
-  role_id: { type: mongoose.Schema.Types.ObjectId, ref: "Roles", required: true },
+  // role_id: { type: mongoose.Schema.Types.ObjectId, ref: "Roles", required: true },
   shift_start: { type: Date, required: true },
   shift_end: { type: Date, required: true }
 

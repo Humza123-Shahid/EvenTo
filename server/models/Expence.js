@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const expenseSchema = new Schema({
+const expenceSchema = new Schema({
   event: { type: mongoose.Schema.Types.ObjectId, ref: "Event" },
   category: { type: String,required:true},
   amount: { type: Number,required:true},
@@ -9,4 +9,4 @@ const expenseSchema = new Schema({
   date: { type: Date, default: Date.now },
 }, { timestamps: true });
 
-module.exports=mongoose.model("Expense", expenseSchema);
+module.exports=mongoose.model("Expence", expenceSchema);

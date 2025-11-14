@@ -35,32 +35,33 @@ const AdminAssigment = () => {
   // }, []);
   const getUserById = (id) => users?.find(d => d._id === id);
  const joinedData=assignments.map(item=>{
-  const staff=staffs.find(stf => stf._id === item.staff_id)
-  const user = getUserById(staff?.user_id);
+  //const staff=staffs.find(stf => stf._id === item.staff_id)
+  const user=users.find(u => u._id === item.user_id)
+  //const user = getUserById(staff?.user_id);
   const event=events.find(evt =>evt._id === item.event_id)
-  const role=roles.find(rl => rl._id === item.role_id)
+  const role=roles.find(rl => rl._id === user?.role_id)
  return{
   ...item,
-  staffName:user?user.fullName:'unKnown',
+  userName:user?user.fullName:'unKnown',
   eventName:event?event.eventName:'unKnown',
   roleName:role?role.name:'unKnown'
  }
  })
   const filteredData = joinedData.filter(item =>
-      item.staffName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.userName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.eventName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.roleName?.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  const handleView = (staffName,eventName,roleName,shiftStart,shiftEnd,index) => {
+  const handleView = (user_name,role_name,eventName,shiftStart,shiftEnd,index) => {
     //const dataitem=buses.find(da => da._id ==id)
     //const datadriver=getDriverById(driverId);
-    navigate('getassignment', { state: { staff:staffName,event:eventName,role:roleName,start:shiftStart,end:shiftEnd,idx:index+1} });
+    navigate('getassignment', { state: { userName:user_name,roleName:role_name,event:eventName,start:shiftStart,end:shiftEnd,idx:index+1} });
      
   };
-  const handleEdit = (id,staff_id,event_id,role_id,shiftStart,shiftEnd) => {
+  const handleEdit = (id,user_name,role_name,event_id,shiftStart,shiftEnd) => {
     //const dataitem=buses.find(da => da._id ==id)
     //const datadriver=getDriverById(driverId);
-    navigate('editassignment', { state: { assignId:id,staffId:staff_id,eventId:event_id,roleId:role_id,start:shiftStart,end:shiftEnd} });
+    navigate('editassignment', { state: { assignId:id,userName:user_name,roleName:role_name,eventId:event_id,start:shiftStart,end:shiftEnd} });
   };
   const handleDelete = (id) => {
      const confirmed = window.confirm("Are you sure you want to delete this?");
@@ -133,7 +134,6 @@ const AdminAssigment = () => {
             <th>#</th>
             <th>Staff</th>
             <th>Event</th>
-            <th>Role</th>
             <th>Shift Start</th>
             <th>Shift End</th>
             <th>Action</th>
@@ -164,18 +164,17 @@ const AdminAssigment = () => {
               {/* <td>{row.driver_id}</td> */}
               {/* {getDriverName(row.driver_id)}  */}
               
-              <td>{row.staffName}</td>
+              <td>{row?.userName} - {row?.roleName}</td>
               <td>{row.eventName}</td>
-              <td>{row.roleName}</td>
               <td>{formattedShiftStart}</td>
               <td>{formattedShiftEnd}</td>
 
               <td style={{width:"30%"}}>
                 <button style={{ marginRight: "8px", color: "white",backgroundColor:"blue"}} onClick={()=>
-                  handleView(row.staffName,row.eventName,row.roleName,formattedShiftStart,formattedShiftEnd,index)}>
+                  handleView(row.userName,row?.roleName,row.eventName,formattedShiftStart,formattedShiftEnd,index)}>
                 View
               </button>
-              <button onClick={() => handleEdit(row._id,row.staff_id,row.event_id,row.role_id,row?.shift_start,row?.shift_end)} style={{ marginRight: "8px",color:"white",backgroundColor:"green" }}>
+              <button onClick={() => handleEdit(row._id,row.userName,row?.roleName,row.event_id,row?.shift_start,row?.shift_end)} style={{ marginRight: "8px",color:"white",backgroundColor:"green" }}>
                 Edit
               </button>
               <button onClick={() => handleDelete(row._id)} style={{ color:"white",backgroundColor:"red" }}>

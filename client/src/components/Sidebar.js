@@ -45,10 +45,13 @@ const Sidebar = () => {
         <Link className="nav-link text-white" style={{color:'white'}} to="role" onClick={()=>SelectedTab("role")}><i className="fas fa-users me-2"></i> Role</Link>
       </li>
        <li className="nav-item mb-2">
+        <Link className="nav-link text-white" style={{color:'white'}} to="permission" onClick={()=>SelectedTab("permission")}><i className="fas fa-check-circle me-2"></i> Permission</Link>
+      </li>
+       <li className="nav-item mb-2">
         <Link className="nav-link text-white" style={{color:'white'}} to="beverage" onClick={()=>SelectedTab("beverage")}><i className="fas fa-glass-martini-alt me-2"></i> Beverage</Link>
       </li>
       <li className="nav-item mb-2">
-        <Link className="nav-link text-white" style={{color:'white'}} to="expense" onClick={()=>SelectedTab("expense")}><i className="fas fa-dollar-sign me-2"></i> Expense</Link>
+        <Link className="nav-link text-white" style={{color:'white'}} to="expence" onClick={()=>SelectedTab("expence")}><i className="fas fa-dollar-sign me-2"></i> Expence</Link>
       </li>
       <li className="nav-item mb-2">
         <Link className="nav-link text-white" style={{color:'white'}} to="dish" onClick={()=>SelectedTab("dish")}><i className="fas fa-bowl-food me-2"></i> Dish</Link>

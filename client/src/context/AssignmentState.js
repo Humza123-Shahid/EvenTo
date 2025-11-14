@@ -19,7 +19,7 @@ const AssignmentState=(props)=>{
       console.log(json);
       setAssignments(json)
     }
-    const addAssignment=async (allStaff,event_id,role_id,shift_start,shift_end)=>{
+    const addAssignment=async (allStaff,event_id,shift_start,shift_end)=>{
       //console.log(qword,qoption1,qoption2,qoption3,tfvalue); 
       console.log(allStaff);
       const response=await fetch(`${host}/api/assignment/addassignment`,{
@@ -29,7 +29,7 @@ const AssignmentState=(props)=>{
             'auth-token':localStorage.getItem('token')
         },
         // body:JSON.stringify({staff_id,event_id,role_id,shift_start,shift_end})
-        body:JSON.stringify({allStaff,event_id,role_id,shift_start,shift_end})
+        body:JSON.stringify({allStaff,event_id,shift_start,shift_end})
 
       });
       const assignment=await response.json();
@@ -59,7 +59,7 @@ const AssignmentState=(props)=>{
       const newAssignments=assignments.filter((assignment)=>{return assignment._id!==id})
       setAssignments(newAssignments)
     }
-    const editAssignment=async(id,staff_id,event_id,role_id,shift_start,shift_end)=>{
+    const editAssignment=async(id,event_id,shift_start,shift_end)=>{
       console.log(localStorage.getItem('token'));
       const response=await fetch(`${host}/api/assignment/updateassignment/${id}`,{
         method:'PUT',
@@ -67,7 +67,7 @@ const AssignmentState=(props)=>{
             'Content-Type':'application/json',
             'auth-token':localStorage.getItem('token')
           },
-        body:JSON.stringify({staff_id,event_id,role_id,shift_start,shift_end})
+        body:JSON.stringify({event_id,shift_start,shift_end})
       });
       const json=await response.json();
       let newAssignments=JSON.parse(JSON.stringify(assignments));
@@ -77,9 +77,7 @@ const AssignmentState=(props)=>{
         const element = newAssignments[index];
         if(element._id===id)
         {
-          newAssignments[index].staff_id=staff_id;
           newAssignments[index].event_id=event_id;
-          newAssignments[index].role_id=role_id;
           newAssignments[index].shift_start=shift_start;
           newAssignments[index].shift_end=shift_end;
           break;

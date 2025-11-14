@@ -42,7 +42,7 @@ const AdminUser = () => {
     // const datadriver=getDriverById(driverId);
     const role = getRoleById(role_id);
     console.log(id);
-    if(role?.name=="staff")
+    if(role?.name=="director")
     {
       const response=await fetch("http://localhost:5000/api/staff/fetchstaffbyId",{
                     method:'GET',
@@ -54,7 +54,22 @@ const AdminUser = () => {
                   });
                   const json=await response.json()
                   console.log(json);
-        navigate('edituser', { state: { staffId:json[0]._id,userId:id,name:Name,email:Email,phone:Phone,password:Password,roleId:role_id,user:"staff",salary:json[0]?.salary,availability_status:json[0]?.availability_status} });
+        navigate('edituser', { state: { staffId:json[0]._id,userId:id,name:Name,email:Email,phone:Phone,password:Password,roleId:role_id,user:"director",salary:json[0]?.salary,availability_status:json[0]?.availability_status} });
+
+    }
+    else if(role?.name=="manager")
+    {
+      const response=await fetch("http://localhost:5000/api/staff/fetchstaffbyId",{
+                    method:'GET',
+                    headers:{
+                        'Content-Type':'application/json',
+                        'auth-token':localStorage.getItem('token'),
+                        'id':id
+                    },
+                  });
+                  const json=await response.json()
+                  console.log(json);
+        navigate('edituser', { state: { staffId:json[0]._id,userId:id,name:Name,email:Email,phone:Phone,password:Password,roleId:role_id,user:"manager",salary:json[0]?.salary,availability_status:json[0]?.availability_status} });
 
     }
     else if(role?.name=="vendor")
