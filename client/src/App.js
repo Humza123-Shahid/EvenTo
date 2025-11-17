@@ -47,6 +47,30 @@ import AdminDish from './AdminPages/AdminDish';
 import AddDish from './AdminPages/AddDish';
 import ViewDish from './AdminPages/ViewDish';
 import EditDish from './AdminPages/EditDish';
+import AdminInventory from './AdminPages/AdminInventory';
+import InventoryState from './context/InventoryState';
+import AddInventory from './AdminPages/AddInventory';
+import ViewInventory from './AdminPages/ViewInventory';
+import EditInventory from './AdminPages/EditInventory';
+import AdminMenu from './AdminPages/AdminMenu';
+import AddMenu from './AdminPages/AddMenu';
+import MenuState from './context/MenuState';
+import ViewMenu from './AdminPages/ViewMenu';
+import EditMenu from './AdminPages/EditMenu';
+import AdminPackage from './AdminPages/AdminPackage';
+import AddPackage from './AdminPages/AddPackage';
+import PackageState from './context/PackageState';
+import ViewPackage from './AdminPages/ViewPackage';
+import EditPackage from './AdminPages/EditPackage';
+import VenueState from './context/VenueState';
+import AdminVenue from './AdminPages/AdminVenue';
+import AddVenue from './AdminPages/AddVenue';
+import ViewVenue from './AdminPages/ViewVenue';
+import EditVenue from './AdminPages/EditVenue';
+import AdminEvent from './AdminPages/AdminEvent';
+import AddEvent from './AdminPages/AddEvent';
+import ViewEvent from './AdminPages/ViewEvent';
+import EditEvent from './AdminPages/EditEvent';
 
 
 function App() {
@@ -79,6 +103,10 @@ function App() {
       <BeverageState>
       <ExpenceState>
       <DishState>
+      <InventoryState>
+      <MenuState>
+      <PackageState>
+      <VenueState>
       <EventState>
       <UserState>
         <div className="container"  style={{ maxWidth: "100vw",paddingLeft:"0px",paddingRight:"0px" }}>
@@ -112,7 +140,26 @@ function App() {
               <Route path="dish/adddish" element={<AddDish/>} />
               <Route path="dish/getdish" element={<ViewDish/>} /> 
               <Route path="dish/editdish" element={<EditDish/>} />
-
+              <Route path="event" element={<AdminEvent/>} />
+              <Route path="event/addevent" element={<AddEvent/>} />
+              <Route path="event/getevent" element={<ViewEvent/>} /> 
+              <Route path="event/editevent" element={<EditEvent/>} />
+              <Route path="inventory" element={<AdminInventory/>} />
+              <Route path="inventory/addinventory" element={<AddInventory/>} />
+              <Route path="inventory/getinventory" element={<ViewInventory/>} /> 
+              <Route path="inventory/editinventory" element={<EditInventory/>} />
+              <Route path="menu" element={<AdminMenu/>} />
+              <Route path="menu/addmenu" element={<AddMenu/>} />
+              <Route path="menu/getmenu" element={<ViewMenu/>} /> 
+              <Route path="menu/editmenu" element={<EditMenu/>} />
+              <Route path="package" element={<AdminPackage/>} />
+              <Route path="package/addpackage" element={<AddPackage/>} />
+              <Route path="package/getpackage" element={<ViewPackage/>} /> 
+              <Route path="package/editpackage" element={<EditPackage/>} />
+              <Route path="venue" element={<AdminVenue/>} />
+              <Route path="venue/addvenue" element={<AddVenue/>} />
+              <Route path="venue/getvenue" element={<ViewVenue/>} /> 
+              <Route path="venue/editvenue" element={<EditVenue/>} />
           </Route>
           
               <Route path="/" element={<Login/>} />
@@ -123,6 +170,10 @@ function App() {
         </div>
         </UserState>
         </EventState>
+        </VenueState>
+        </PackageState>
+        </MenuState>
+        </InventoryState>
         </DishState>
         </ExpenceState>
         </BeverageState>

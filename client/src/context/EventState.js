@@ -58,7 +58,7 @@ const EventState=(props)=>{
           },
         body:JSON.stringify({organizer,eventName,description,category,venue,eventDate,status})
       });
-      const json=response.json();
+      const json=await response.json();
       let newEvents=JSON.parse(JSON.stringify(events));
       //let newOptions= options.filter(item=>item.mcqId!==id);
       //let newOptions=JSON.parse(JSON.stringify(options));

@@ -7,12 +7,16 @@ const eventSchema = new Schema({
   description: { type: String },
   category: { type: String }, // e.g. Music, Sports, Tech
   venue: { type: mongoose.Schema.Types.ObjectId, ref: "Venue", required: true },
-  eventDate: { type: Date, required: true },
+  eventDate: { type: Date, default: Date.now },
   status: {
     type: String,
-    enum: ["upcoming", "ongoing", "completed", "cancelled"],
     default: "upcoming",
-  },
+  }
+  // status: {
+  //   type: String,
+  //   enum: ["upcoming", "ongoing", "completed", "cancelled"],
+  //   default: "upcoming",
+  // },
 }, { timestamps: true });
 
 module.exports=mongoose.model("Event", eventSchema);
