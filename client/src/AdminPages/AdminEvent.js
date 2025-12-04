@@ -96,9 +96,11 @@ const AdminEvent = () => {
   return (
    <div>
       <button className="btn btn-primary mt-3 ms-4" onClick={handleClick}>Add Event</button>
-      <div className="container d-flex justify-content-between">
+      <div className="d-flex justify-content-between" style={{
+      margin: '20px 0px 0px 15px',
+      padding: '0px'}}>
         <h3 className="ms-2">Event Data</h3>
-        <div className="me-1" style={{display: 'flex',
+        <div className="me-5" style={{display: 'flex',
       alignItems: 'center',
       border: '1px solid #ccc',
       borderRadius: '20px',
@@ -146,7 +148,8 @@ const AdminEvent = () => {
                   handleView(row._id,index+1,row.organizer,row.venue)}>
                 View
               </button>
-              <button onClick={() => handleEdit(row._id,row.organizer,row.venue)} style={{ marginRight: "8px",color:"white",backgroundColor:"green" }}>
+                <button onClick={() => handleEdit(row._id)} style={{ marginRight: "8px",color:"white",backgroundColor:"green" }}>
+              {/* <button onClick={() => handleEdit(row._id,row.organizer,row.venue)} style={{ marginRight: "8px",color:"white",backgroundColor:"green" }}> */}
                 Edit
               </button>
               <button onClick={() => handleDelete(row._id)} style={{ color:"white",backgroundColor:"red" }}>

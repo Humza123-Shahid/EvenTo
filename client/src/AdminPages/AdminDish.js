@@ -6,7 +6,7 @@ import eventContext from '../context/eventContext'
 import { useNavigate,useLocation, data} from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
-const AdminExpence = () => {
+const AdminDish = () => {
     const context=useContext(dishContext);
     const {dishes,deleteDish,getDishes}=context;
     //  const context2=useContext(eventContext);
@@ -85,9 +85,11 @@ const AdminExpence = () => {
   return (
    <div>
       <button className="btn btn-primary mt-3 ms-4" onClick={handleClick}>Add Dish</button>
-      <div className="container d-flex justify-content-between">
-        <h3 className="ms-2">Expence Data</h3>
-        <div className="me-1" style={{display: 'flex',
+      <div className="d-flex justify-content-between" style={{
+      margin: '20px 0px 0px 15px',
+      padding: '0px'}}>
+        <h3 className="ms-2">Dish Data</h3>
+        <div className="me-5" style={{display: 'flex',
       alignItems: 'center',
       border: '1px solid #ccc',
       borderRadius: '20px',
@@ -147,4 +149,4 @@ const AdminExpence = () => {
   );
 }
 
-export default AdminExpence
+export default AdminDish

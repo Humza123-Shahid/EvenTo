@@ -1,5 +1,7 @@
 
 import React,{useState,useEffect,useContext} from 'react'
+import { useLocation} from 'react-router-dom'
+
 import assignmentContext from '../context/assignmentContext'
 import staffContext from '../context/staffContext'
 import eventContext from '../context/eventContext'
@@ -16,6 +18,8 @@ const AddAssignment = () => {
     const {events,getEvents}=context3;
     const context4=useContext(roleContext);
     const {roles,getRoles}=context4;
+        const location = useLocation(); 
+    
     const [showToast,setShowToast]=useState(false)
         const [msg,setMsg]=useState('')
         const [type,setType]=useState('')
@@ -143,6 +147,12 @@ console.log("abc")
 useEffect(() => {
            console.log(allStaffValue);
           }, [allStaffValue]); 
+  useEffect(() => {
+    // Set the title based on the current path or other page-specific data
+    if (location.pathname === '/admin/assignment/addassignment') {
+      document.title = 'EvenTo - Add Assignment';
+    }
+  }, []);
 useEffect(() => {
             const fetchData = async () => {
             //const result = await getQuizzes(); // Call context function

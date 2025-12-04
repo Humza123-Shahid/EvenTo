@@ -31,6 +31,8 @@ app.use('/api/inventory',require('./Routes/admin/inventory'))
 app.use('/api/menu',require('./Routes/admin/menu'))
 app.use('/api/package',require('./Routes/admin/package'))
 app.use('/api/venue',require('./Routes/admin/venue'))
+app.use('/api/booking',require('./Routes/admin/booking'))
+app.use('/api/payment',require('./Routes/admin/payment'))
 
 // app.use('/api/buses',require('./Routes/admin/buses'))
 // app.use('/api/destination',require('./Routes/admin/destination'))

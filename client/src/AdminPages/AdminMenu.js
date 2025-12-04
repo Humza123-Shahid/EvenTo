@@ -71,9 +71,11 @@ const AdminMenu = () => {
   return (
    <div>
       <button className="btn btn-primary mt-3 ms-4" onClick={handleClick}>Add Menu</button>
-      <div className="container d-flex justify-content-between">
+      <div className="d-flex justify-content-between" style={{
+      margin: '20px 0px 0px 15px',
+      padding: '0px'}}>
         <h3 className="ms-2">Menus Data</h3>
-        <div className="me-1" style={{display: 'flex',
+        <div className="me-5" style={{display: 'flex',
       alignItems: 'center',
       border: '1px solid #ccc',
       borderRadius: '20px',

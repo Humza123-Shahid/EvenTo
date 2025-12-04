@@ -15,7 +15,7 @@ const Sidebar = () => {
         localStorage.removeItem("token");
         sessionStorage.setItem("reloaded", "false");
         setSelectedTab("login")
-         navigate('/login')
+        //  navigate('/login')
         // Optionally, redirect to a login page or home page after logout
         // history.push('/login'); // If using useHistory hook
       };
@@ -32,9 +32,14 @@ const Sidebar = () => {
         position: 'sticky',
         top: 0,
         padding: '1rem',
-        overflow: 'hidden',}}>
+        // overflow: 'hidden'
+        overflowY: 'auto'
+        }}>
     <h4 className="mb-4">Admin Dashboard</h4>
     <ul className="nav flex-column">
+      <li className="nav-item mb-2">
+        <Link className="nav-link text-white" style={{color:'white'}} to="dashboard" onClick={()=>SelectedTab("dashboard")}><i className="fas fa-tachometer-alt me-2"></i> Dashboard</Link>
+      </li>
        <li className="nav-item mb-2">
         <Link className="nav-link text-white" style={{color:'white'}} to="user" onClick={()=>SelectedTab("user")}><i className="fas fa-user me-2"></i> User</Link>
       </li>
@@ -42,10 +47,16 @@ const Sidebar = () => {
         <Link className="nav-link text-white" style={{color:'white'}} to="assignment" onClick={()=>SelectedTab("assignment")}><i className="fas fa-tasks me-2"></i> Assignment</Link>
       </li>
       <li className="nav-item mb-2">
+        <Link className="nav-link text-white" style={{color:'white'}} to="booking" onClick={()=>SelectedTab("booking")}><i className="fas fa-book me-2"></i> Booking</Link>
+      </li>
+      <li className="nav-item mb-2">
         <Link className="nav-link text-white" style={{color:'white'}} to="role" onClick={()=>SelectedTab("role")}><i className="fas fa-users me-2"></i> Role</Link>
       </li>
        <li className="nav-item mb-2">
         <Link className="nav-link text-white" style={{color:'white'}} to="permission" onClick={()=>SelectedTab("permission")}><i className="fas fa-check-circle me-2"></i> Permission</Link>
+      </li>
+      <li className="nav-item mb-2">
+        <Link className="nav-link text-white" style={{color:'white'}} to="payment" onClick={()=>SelectedTab("payment")}><i className="fas fa-money-check me-2"></i> Payment</Link>
       </li>
        <li className="nav-item mb-2">
         <Link className="nav-link text-white" style={{color:'white'}} to="beverage" onClick={()=>SelectedTab("beverage")}><i className="fas fa-glass-martini-alt me-2"></i> Beverage</Link>

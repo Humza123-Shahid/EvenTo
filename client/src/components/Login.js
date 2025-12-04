@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Link,useNavigate, useLocation} from 'react-router-dom'
 import logimg from '../images/userlogtransparent.png';
 import InfoMessage from './InfoMessage';
@@ -9,7 +9,7 @@ const Login = (props) => {
     const [showToast,setShowToast]=useState(false)
     const [msg,setMsg]=useState('')
     const [type,setType]=useState('')
-
+    const location = useLocation(); 
     let navigate=useNavigate();
   const handleSubmit=async(e)=>{
     e.preventDefault();
@@ -63,6 +63,12 @@ const Login = (props) => {
     const onChange=(e)=>{
       setCredentials({...credentials,[e.target.name]:e.target.value})
     }
+    useEffect(() => {
+    // Set the title based on the current path or other page-specific data
+    if (location.pathname === '/') {
+      document.title = 'EvenTo - Login';
+    }
+  }, []);
   return (
     <div className='mt-0 d-flex flex-column align-items-center justify-content-center' style={{backgroundColor:"#318CE7",height:'100vh'}}>
       <InfoMessage showToast={showToast} msg={msg} type={type}/>

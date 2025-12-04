@@ -7,8 +7,9 @@ const bookingSchema = new Schema({
   quantity: { type: Number, required: true },
   totalAmount: { type: Number, required: true },
   bookingDate: { type: Date, default: Date.now },
-  status: { type: String, enum: ["confirmed", "cancelled", "pending", 'Waitlisted', 'Attended'], default: "pending" },
-  payment: { type: mongoose.Schema.Types.ObjectId, ref: "Payment" }
+  status: { type: String, default: "pending" },
+  // status: { type: String, enum: ["confirmed", "cancelled", "pending", 'Waitlisted', 'Attended'], default: "pending" },
+  // payment: { type: mongoose.Schema.Types.ObjectId, ref: "Payment" }
 }, { timestamps: true });
 
 module.exports=mongoose.model("Booking", bookingSchema);

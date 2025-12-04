@@ -71,7 +71,20 @@ import AdminEvent from './AdminPages/AdminEvent';
 import AddEvent from './AdminPages/AddEvent';
 import ViewEvent from './AdminPages/ViewEvent';
 import EditEvent from './AdminPages/EditEvent';
-
+import Home from './UserPages/Home';
+import Packages from './UserPages/Packages';
+import AboutUs from './UserPages/AboutUs';
+import BookingState from './context/BookingState';
+import PaymentState from './context/PaymentState';
+import AdminBooking from './AdminPages/AdminBooking';
+import AddBooking from './AdminPages/AddBooking';
+import ViewBooking from './AdminPages/ViewBooking';
+import EditBooking from './AdminPages/EditBooking';
+import AdminPayment from './AdminPages/AdminPayment';
+import AddPayment from './AdminPages/AddPayment';
+import ViewPayment from './AdminPages/ViewPayment';
+import EditPayment from './AdminPages/EditPayment';
+import Dashboard from './AdminPages/Dashboard';
 
 function App() {
   const [alert,setAlert]=useState(null);
@@ -108,14 +121,21 @@ function App() {
       <PackageState>
       <VenueState>
       <EventState>
+      <BookingState>
+      <PaymentState>
       <UserState>
-        <div className="container"  style={{ maxWidth: "100vw",paddingLeft:"0px",paddingRight:"0px" }}>
+        {/* <div className="container"  style={{ maxWidth: "100vw",paddingLeft:"0px",paddingRight:"0px" }}> */}
           <Routes>
           <Route exact path="/admin" element={<Admin/>} >
+              <Route path="dashboard" element={<Dashboard/>} />
               <Route path="assignment" element={<AdminAssignment/>} /> 
               <Route path="assignment/addassignment" element={<AddAssignment/>} /> 
               <Route path="assignment/getassignment" element={<ViewAssignment/>} />  
               <Route path="assignment/editassignment" element={<EditAssignment/>} />
+              <Route path="booking" element={<AdminBooking/>} />
+              <Route path="booking/addbooking" element={<AddBooking/>} />
+              <Route path="booking/getbooking" element={<ViewBooking/>} />  
+              <Route path="booking/editbooking" element={<EditBooking/>} />
               <Route path="user" element={<AdminUser/>} />  
               <Route path="user/adduser" element={<AddUser/>} />
               <Route path="user/getuser" element={<ViewUser/>} />  
@@ -128,6 +148,10 @@ function App() {
               <Route path="permission/addpermission" element={<AddPermission/>} />
               <Route path="permission/getpermission" element={<ViewPermission/>} /> 
               <Route path="permission/editpermission" element={<EditPermission/>} />
+              <Route path="payment" element={<AdminPayment/>} /> 
+              <Route path="payment/addpayment" element={<AddPayment/>} />
+              <Route path="payment/getpayment" element={<ViewPayment/>} /> 
+              <Route path="payment/editpayment" element={<EditPayment/>} />
               <Route path="beverage" element={<AdminBeverage/>} />
               <Route path="beverage/addbeverage" element={<AddBeverage/>} />
               <Route path="beverage/getbeverage" element={<ViewBeverage/>} /> 
@@ -162,13 +186,18 @@ function App() {
               <Route path="venue/editvenue" element={<EditVenue/>} />
           </Route>
           
-              <Route path="/" element={<Login/>} />
+              {/* <Route path="/" element={<Login/>} /> */}
               <Route path="/login" element={<Login/>} />
+              <Route path="/admin/login" element={<Login/>} />
               <Route path="/signup" element={<SignUp/>} />
-            
+              <Route path="/" element={<Home/>}/>
+              <Route path="packages" element={<Packages/>}/>
+              <Route path="aboutus" element={<AboutUs/>}/>              
           </Routes>
-        </div>
+        {/* </div> */}
         </UserState>
+        </PaymentState>
+        </BookingState>
         </EventState>
         </VenueState>
         </PackageState>

@@ -1,4 +1,5 @@
 import React,{useState,useContext, useEffect} from 'react'
+
 import '../styles/StyledTable.css';
 import assignmentContext from '../context/assignmentContext'
 import staffContext from '../context/staffContext'
@@ -16,6 +17,7 @@ const AdminAssigment = () => {
     const {events,getEvents}=context3;
     const context4=useContext(roleContext);
     const {roles,getRoles}=context4;
+    const location = useLocation(); 
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
     const [users, setUsers] = useState([]);
@@ -78,6 +80,12 @@ const AdminAssigment = () => {
   // };
   
 //const getDriverById = (id) => drivers.find(d => d._id === id);
+ useEffect(() => {
+    // Set the title based on the current path or other page-specific data
+    if (location.pathname === '/admin/assignment') {
+      document.title = 'EvenTo - Assignment';
+    }
+  }, []);
   useEffect(() => {
         const fetchData = async () => {
         //const result = await getQuizzes(); // Call context function
@@ -106,9 +114,11 @@ const AdminAssigment = () => {
   return (
    <div>
       <button className="btn btn-primary mt-3 ms-4" onClick={handleClick}>Add Assignment</button>
-      <div className="container d-flex justify-content-between">
+      <div className="d-flex justify-content-between" style={{
+      margin: '20px 0px 0px 15px',
+      padding: '0px'}}>
         <h3 className="ms-2">Assignment Data</h3>
-        <div className="me-1" style={{display: 'flex',
+        <div className="me-5" style={{display: 'flex',
       alignItems: 'center',
       border: '1px solid #ccc',
       borderRadius: '20px',

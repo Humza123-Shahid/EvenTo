@@ -1,0 +1,25 @@
+.swiper-pagination {
+    display: flex;
+  bottom: 85px !important;
+  left: 365px !important;
+  gap:7px !important;
+}
+
+/* Default bullet style */
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  opacity: 1;
+  margin: 0 4px;
+  border-radius: 50%;
+  transition: background .3s ease;
+}
+
+/* Active bullet */
+.swiper-pagination-bullet-active {
+  background: #fff; /* Like Owl */
+}
+.swiper-pagination-bullet-active {
+  transform: scale(2);
+}
