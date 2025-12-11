@@ -1,5 +1,5 @@
-🚌 Bus Reservation System README
-This is a comprehensive bus ticket reservation system built using the MERN Stack (MongoDB, Express, React, Node.js).
+📅 Event Management System README
+This is a comprehensive event management system built using the MERN Stack (MongoDB, Express, React, Node.js).
 
 🚀 Getting Started
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
