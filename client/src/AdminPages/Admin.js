@@ -61,7 +61,9 @@ useEffect(()=>{
   return (
     <div className="d-flex">
       <InfoMessage showToast={showToast} msg={msg} type={type}/>
+      <div className='bg-dark' style={{backgroundColor:'rgb(44, 62, 80)'}}>
       <Sidebar />
+      </div>
       <div className="flex-grow-1 d-flex flex-column" style={{ minHeight: '100vh',width:'80%' }}>
         <AdminNavbar/>
         <Outlet/>

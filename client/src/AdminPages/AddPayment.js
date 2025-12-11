@@ -126,10 +126,10 @@ useEffect(() => {
               const formattedBookingDate = new Date(row?.bookingDate).toLocaleString('en-US', {
              year: 'numeric',
             month: '2-digit',
-            day: '2-digit',
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: true // Ensures AM/PM
+            day: '2-digit'
+            // hour: 'numeric',
+            // minute: 'numeric',
+            // hour12: true // Ensures AM/PM
           });
             return(
                 <option value={row._id}>{formattedBookingDate}</option>

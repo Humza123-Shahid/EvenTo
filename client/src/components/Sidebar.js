@@ -1,6 +1,6 @@
 import React,{ useState, useEffect}from 'react';
 import { Link, useNavigate } from "react-router-dom";
-
+import '../styles/scrollBar.css';
 
 const Sidebar = () => {
    let navigate=useNavigate();
@@ -26,9 +26,11 @@ const Sidebar = () => {
         // history.push('/login'); // If using useHistory hook
       };
   return(
-  <div className="bg-dark text-white p-3 vh-100" style={{ width: '250px',backgroundColor: '#2c3e50',
+  // <div className="bg-dark text-white p-3 vh-100" style={{ width: '250px',backgroundColor: '#2c3e50',
+    <div className="bg-dark text-white p-3" style={{ width: '250px',backgroundColor: '#2c3e50',
         color: 'white',
-        height: '100vh',
+        // height: '100vh',
+        height: '100%',
         position: 'sticky',
         top: 0,
         padding: '1rem',

@@ -141,10 +141,10 @@ const AdminPayment = () => {
             const formattedBookingDate = new Date(row?.bookingName).toLocaleString('en-US', {
              year: 'numeric',
             month: '2-digit',
-            day: '2-digit',
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: true // Ensures AM/PM
+            day: '2-digit'
+            // hour: 'numeric',
+            // minute: 'numeric',
+            // hour12: true // Ensures AM/PM
           });
             return(
             <tr key={row._id}>
