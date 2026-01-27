@@ -59,12 +59,12 @@ router.put('/updatebeverage/:id',fetchuser,async (req,res)=>{
 // ROUTE 4: Delete an existing Question using :DELETE "/api/questions/deletequestion".Login required
 router.delete('/deletebeverage/:id',fetchuser,async (req,res)=>{
 
-    let assignment=await Beverage.findById(req.params.id);
-    if(!assignment){return res.status(404).send("Not Found")}
+    let beverage=await Beverage.findById(req.params.id);
+    if(!beverage){return res.status(404).send("Not Found")}
 
     
 
-    assignment =await Beverage.findByIdAndDelete(req.params.id)
-    res.json({"Success":"Beverage has been deleted.",assignment:assignment});
+    beverage =await Beverage.findByIdAndDelete(req.params.id)
+    res.json({"Success":"Beverage has been deleted.",beverage:beverage});
 })
 module.exports = router

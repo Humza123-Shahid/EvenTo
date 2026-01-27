@@ -86,12 +86,12 @@ const Login = (props) => {
         </div>
 
         <button type="submit" className="btn btn-primary mb-4" style={{width:'100%'}} >Log In</button>
-         <p className="mb-5" style={{textAlign:'center'}}>
+         {/* <p className="mb-5" style={{textAlign:'center'}}>
         Don't have an account?{' '}
         <Link to="/signup" style={{textDecoration:'underline'}}>
          Sign Up
         </Link>
-      </p>
+      </p> */}
       </form>
      
     </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
 
-const ViewDestination = () => {
+const ViewRole = () => {
      const location = useLocation();
     const Role=location.state?.role || {};
     const index=location.state?.idx;
@@ -29,4 +29,4 @@ const ViewDestination = () => {
   )
 }
 
-export default ViewDestination
+export default ViewRole
