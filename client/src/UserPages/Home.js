@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 //   import "../js/jquery2.1.1.js";
 //  import "../js/script.js";
-// import $ from 'jquery';
+import $ from 'jquery';
 // import 'owl.carousel';
 // import 'owl.carousel/dist/assets/owl.carousel.css';
 // import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -20,11 +20,13 @@ import imgservice3 from '../images/resource/service3.png'
 import imgservice4 from '../images/resource/service4.png'
 import imgservice5 from '../images/resource/service5.png'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination} from "swiper/modules";
+import { Navigation, Pagination, Autoplay, EffectFade} from "swiper/modules";
 import 'swiper/css';
-import "swiper/css/pagination";
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 import '../styles/swiperPagination.css';
-
+import { Box, Typography, styled } from '@mui/material';
 import imgparallax9 from '../images/parallax9.jpg';
 import imglogo from '../images/logo.png';
 
@@ -49,6 +51,17 @@ const Home = () => {
 const handleLogout =()=>{
     localStorage.removeItem('token');
   }
+  useEffect(() => {
+	// $( function() { $( 'audio' ).audioPlayer(); } );
+   window.jQuery('.tp-banner').revolution({
+      delay:9000,
+			startwidth:1170,
+			startheight:768,
+			hideThumbs:10,
+			fullWidth:"on",
+			forceFullWidth:"off"
+   });
+}, []);
   return (
 
    <>
@@ -57,9 +70,9 @@ const handleLogout =()=>{
    <CustomScripts/>
    
 
-<div className="page-loader">
+{/* <div className="page-loader">
   <div className="item one"></div>
-</div> 
+</div>  */}
 
 <header>
 	<div className="container">
@@ -126,7 +139,6 @@ const handleLogout =()=>{
 		</div>	
 	</div>	
 </div>
-
 <div className="slider-bar">
 	<div className="container">
 		<div className="bottom-bar">
